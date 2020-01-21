@@ -9,10 +9,13 @@ async function ani() {
 
   var links = document.getElementsByTagName("a");
 
-  for (var i = 0; i < pantone.length; i++){
-    document.body.style.backgroundColor = pantone[i];
+  var i = 0;
+
+  while(true) {
+    document.body.style.backgroundColor = pantone[i%pantone.length];
     links[i%5].style.color = pantone[(i+1)%pantone.length];
     await sleep(3000);
+    i++;
   }
 }
 
