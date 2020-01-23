@@ -13,7 +13,7 @@ async function ani() {
 
   while(true) {
     document.body.style.backgroundColor = pantone[i%pantone.length];
-    links[i%5].style.color = pantone[(i+1)%pantone.length];
+    links[i%7].style.color = pantone[(i+1)%pantone.length];
     await sleep(3000);
     i++;
   }
