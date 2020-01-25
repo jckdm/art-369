@@ -18,9 +18,8 @@ a:hover { cursor: help; text-decoration: underline; }
     display:inline-block;
 }
 
-#pan {
+.pan {
   position: fixed;
-  right: 0;
   bottom: 0;
   margin: 0;
   padding: 2vw;
@@ -29,15 +28,6 @@ a:hover { cursor: help; text-decoration: underline; }
   -webkit-text-stroke-color: #00000080;
 }
 
-#yr {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  margin: 0;
-  padding: 2vw;
-  -webkit-text-fill-color: #FFFFFF00;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #00000080;
-}
-
+#pan_c { right: 0; }
+#yr { left: 0; }
 #space { padding-bottom: 10vh; }
