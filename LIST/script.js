@@ -26,7 +26,7 @@ async function ani() {
   while(true) {
     document.body.style.backgroundColor = pantone[i%pantone.length];
     document.getElementById('pan_c').innerHTML = pantone_names[i%pantone.length];
-    links[i%15].style.color = pantone[(i+1)%pantone.length];
+    links[i%16].style.color = pantone[(i+1)%pantone.length];
     await sleep(3000);
     i++;
     yr.innerHTML = yrs[i%pantone.length];
