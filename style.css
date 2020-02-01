@@ -1,13 +1,13 @@
 body {
   background-color: #000000;
   text-align: center;
-  padding-top: 15vh;
   font-family: Helvetica;
-  letter-spacing: 2px;
+  padding-top: calc(3vh + 5vw + 50px);
+  letter-spacing: 0.15vw;
 }
 
 a, a:visited { color: black; text-decoration: none; }
-a:hover { cursor: help; text-decoration: underline; }
+a:hover { cursor: default; text-decoration: underline; }
 
 .highlight, #tbd {
     background: #FFFFFF;
@@ -27,8 +27,9 @@ a:hover { cursor: help; text-decoration: underline; }
   bottom: 0;
   margin: 0;
   padding: 2vw;
+  font-size: calc(2.5vw + 1.5vh + 5px);
   -webkit-text-fill-color: #FFFFFF00;
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-width: 0.5px;
   -webkit-text-stroke-color: #00000080;
 }
 
