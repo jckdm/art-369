@@ -1,4 +1,14 @@
-window.onload = function() { ani(); };
+window.onload = function() {
+  ani();
+  appear();
+};
+
+async function appear() {
+  while (true) {
+  console.log(Math.floor(Math.random() * Math.floor(20)));
+  await sleep(1000);
+}
+}
 
 async function ani() {
 
