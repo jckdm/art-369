@@ -77,6 +77,6 @@ a:hover { cursor: default; text-decoration: underline; }
 }
 
 @media only screen and (max-width: 812px) {
-  body { padding-top: calc(6vh + 2vw); }
-   #b { left: 47.5%; }
+  body { padding-top: calc(5vh + 2vw); }
+   #b { left: 47.5%; padding-bottom: calc(20px + 1vw + 4vh); }
 }
