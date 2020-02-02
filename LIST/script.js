@@ -37,14 +37,14 @@ async function ani() {
              2010, 2011, 2012, 2013, 2014, 2015, 2016, 2016, 2017, 2018,
              2019, 2020];
 
-  var links = document.getElementsByTagName("a");
+  //var links = document.getElementsByTagName("a");
   var i = 0;
   yr.innerHTML= 2000;
 
   while(true) {
     document.body.style.backgroundColor = pantone[i%pantone.length];
     document.getElementById('pan_c').innerHTML = pantone_names[i%pantone.length];
-    links[i%20].style.color = pantone[(i+1)%pantone.length];
+    //links[i%20].style.color = pantone[(i+1)%pantone.length];
     await sleep(3000);
     i++;
     yr.innerHTML = yrs[i%pantone.length];
