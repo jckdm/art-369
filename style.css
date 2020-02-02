@@ -20,7 +20,6 @@ a:hover { cursor: default; text-decoration: underline; }
     border-radius: 3px;
     display:inline-block;
     width: calc(4.5vw + 27.5px);
-    height: calc(100 - (5vw)vw + 1.5vh + 15px);
 }
 
 #tbd { background: #808080; }
