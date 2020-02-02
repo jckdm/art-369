@@ -4,10 +4,16 @@ window.onload = function() {
 };
 
 async function appear() {
-  while (true) {
-  console.log(Math.floor(Math.random() * Math.floor(20)));
-  await sleep(1000);
+
+  arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+
+  while (arr.length != 0) {
+    console.log(Math.floor(Math.random() * Math.floor(20)));
+    await sleep(1000);
+  }
 }
+
+
 }
 
 async function ani() {
