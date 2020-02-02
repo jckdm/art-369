@@ -1,19 +1,21 @@
-window.onload = function() {
-  ani();
-  appear();
-};
+window.onload = function() { render(); };
 
-async function appear() {
+async function render() {
 
-  arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+  arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25];
+  var l = arr.length;
 
   while (arr.length != 0) {
-    console.log(Math.floor(Math.random() * Math.floor(20)));
-    await sleep(1000);
+    var n = (Math.ceil(Math.random() * Math.floor(arr[l-1])));
+    var e = document.getElementById(n.toString());
+    e.style.display = "inline-block";
+    var i = arr.indexOf(n);
+    if (i > -1) { arr.splice(i, 1); l--; }
+    await sleep(l * 10);
   }
-}
-
-
+  // turn on the lights
+  await sleep(1000);
+  ani();
 }
 
 async function ani() {

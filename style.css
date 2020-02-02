@@ -9,17 +9,28 @@ body {
 a, a:visited { color: black; text-decoration: none; }
 a:hover { cursor: default; text-decoration: underline; }
 
-.highlight, #tbd {
+.highlight, .tbd, .list {
+    display: inline-block;
     background: #FFFFFF;
     padding: 3px 7px;
     margin: -3px -5px;
     line-height: 2;
     border-radius: 3px;
-    display:inline-block;
     width: calc(4.5vw + 27.5px);
 }
 
-#tbd { background: #808080; }
+.temp {
+    display: inline-block;
+    background: #808080;
+    padding: 3px 7px;
+    margin: -3px -5px;
+    line-height: 2;
+    border-radius: 3px;
+    width: calc(4.5vw + 27.5px);
+}
+
+.list { display: none; }
+.tbd { display: none; background: #808080; }
 
 .pan {
   position: fixed;
