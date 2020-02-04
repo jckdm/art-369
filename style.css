@@ -6,6 +6,8 @@ body {
   letter-spacing: 0.15vw;
 }
 
+[id='11'] { letter-spacing: 1.4px;}
+
 a, a:visited { color: black; text-decoration: none; }
 a:hover { cursor: default; text-decoration: underline; }
 
