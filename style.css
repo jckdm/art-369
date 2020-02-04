@@ -59,6 +59,8 @@ a:hover { cursor: default; text-decoration: underline; }
   -webkit-text-stroke-color: #00000080;
 }
 
+#b:hover { text-decoration: underline; text-decoration-color: #FFFFFF; }
+
 .flex-container {
     display: flex;
     flex-direction: row;
