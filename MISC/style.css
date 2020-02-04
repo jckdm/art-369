@@ -1,0 +1,13 @@
+body { font-family: 'Courier Prime', monospace; font-size: 36px; }
+
+.site { padding-left: calc(6vw + 35px); padding-right: 5vw; max-width: 70vw;  }
+.open { position: absolute; width: 10vw; left: calc(1.85vw + 5px); }
+
+@media only screen and (max-width: 790px) {
+  body { font-size: 28pt; } }
+@media only screen and (max-width: 630px) {
+  body { font-size: 22pt; } }
+@media only screen and (max-width: 495px) {
+  body { font-size: 18pt; } }
+@media only screen and (max-width: 420px) {
+  body { font-size: 14pt; } }
