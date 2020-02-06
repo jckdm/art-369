@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+      <meta charset="UTF-8">
+      <title>LIST : 22</title>
+      <style>
+
+      #site { padding-left: 10vw; font-size: 24px; }
+
+      .travel, .food, .shopping, .groceries { animation-name: magic; }
+      .travel { animation-duration: 3s; }
+      .food { animation-duration: 5s; }
+      .shopping { animation-duration: 6s; }
+      .groceries { animation-duration: 4s; }
+
+      @keyframes magic { from { color: black; } to { color: white; } }
+      </style>
+
+      <script>
+      // https://www.sitepoint.com/delay-sleep-pause-wait/
+      function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
+      window.onload = async function() { while (true) { await sleep(10000); location.reload(); }}
+      </script>
+  </head>
+  <body>
+    <div id="site">
+      <text class="travel">MTA*MNR STATION TIX NEW YORK NY : Tuesday, Dec. 17, 2019 : $17.75</text> <br>
+      <text class="food">SQ *KONDITORI SWEDISH BROOKLYN NY : Friday, Dec. 20, 2019 : $7.00</text> <br>
+      <text class="food">LASSEN & HENNIGS BROOKLYN NY : Friday, Dec. 20, 2019 : $11.68</text> <br>
+      <text class="food">SQ *BENDOM BROOKLYN IN BROOKLYN NY : Saturday, Dec. 21, 2019 : $37.00</text> <br>
+      <text class="shopping">BUFFALO EXCHANGE NY04 BROOKLYN NY : Saturday, Dec. 21, 2019 : $34.00</text> <br>
+      <text class="food">SQ *SMITH STREET BAGELS BROOKLYN NY 11201 US : Tuesday, Dec. 24, 2019 : $9.80</text> <br>
+      <text class="food">HAPPY DAYS DINER 718-8758361 NY 11201 US : Tuesday, Dec. 24, 2019 : $44.42</text> <br>
+      <text class="food">HANCO’S. BROOKLYN NY 11215 US : Thursday, Dec. 26, 2019 : $25.04</text> <br>
+      <text class="groceries">KEY FOOD 2182 BROOKLYN NY 11233 US : Saturday, Dec. 28, 2019 : $34.60</text> <br>
+      <text class="food">SQ *BAREBURGER 877-417-4551 NY 11201 US : Monday, Dec. 30, 2019 : $55.03</text> <br>
+      <text class="food">MURA BROOKLYN NY 11215 US : Monday, Dec. 30, 2019 : $28.00</text> <br>
+      <text class="groceries">TRADER JOE'S #558 QPS BROOKLYN NY 11201 US : Friday, Jan. 3, 2020 : $11.44</text> <br>
+      <text class="groceries">KEY FOOD 1570 BROOKLYN NY 11201 US : Saturday, Jan. 4, 2020 : $17.59</text> <br>
+      <text class="shopping">STRAND BOOK STORE RETAIL NEW YORK NY 10003 US : Monday, Jan. 6, 2020 : $51.15</text> <br>
+      <text class="food">PABLITO’S TAQUERIA RES BROOKLYN NY 11215 US : Friday, Jan. 10, 2020 : $22.60</text> <br>
+      <text class="travel">MTA*MNR STATION TIX NEW YORK NY 10170 US : Saturday, Jan. 11, 2020 : $17.75</text> <br>
+      <text class="food">CKO*www.snackpass.co 440-5540448 OH 44139 US : Saturday, Jan. 11, 2020 : $9.65</text> <br>
+      <text class="shopping">LLBEAN-SHOPSATYALE NEW HAVEN CT 06511 US : Sunday, Jan. 12, 2020 : $21.26</text> <br>
+      <text class="food">CKO*www.snackpass.co 440-5540448 OH 44139 US : Thursday, Jan. 16, 2020 : $10.33</text> <br>
+      <text class="food">CKO*www.snackpass.co 440-5540448 OH 44139 US : Wednesday, Jan. 15, 2020 : $12.08</text> <br>
+      <text class="food">CKO*www.snackpass.co 440-5540448 OH 44139 US : Friday, Jan. 17, 2020 : $5.31</text> <br>
+    </div>
+  </body>
+</html>
