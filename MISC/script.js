@@ -4,9 +4,9 @@ async function render() {
   var circ = document.getElementById('circ');
   while (true) {
     await sleep(2000);
-    circ.style.stroke = "#0000FFCC";
+    circ.style.stroke = "#0000FFB3";
     await sleep(2000);
-    circ.style.stroke = "#FFFFFFCC";
+    circ.style.stroke = "#FFFFFFB3";
   }
 };
 
