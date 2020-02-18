@@ -1,0 +1,8 @@
+body { background: darkgray; }
+#top { fill: #473936; }
+#belowgrate, #backgrate { fill: #2c2321; }
+#grate, #front { fill: #574642; }
+#fronter { fill: #0d0e0c; }
+#screen { fill: #330000D9; stroke: gray; stroke-width: 0.25 }
+#wood { stroke: black; }
+#s { display: block; margin: auto; }
