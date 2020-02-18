@@ -1,0 +1,7 @@
+body { background-color: blue; }
+
+#circ {
+  fill: #FFFFFFE6;
+  stroke-width: 3;
+  stroke: white;
+}
