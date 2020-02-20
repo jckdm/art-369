@@ -1,6 +1,7 @@
 body { background: darkgray; }
 #top { fill: #473936; }
-#belowgrate, #backgrate { fill: #2c2321; }
+#belowgrate { fill: #2c2321; }
+#backgrate { fill: #3a2e2c; }
 #grate, #front { fill: #574642; }
 #fronter { fill: #010101D9; }
 #screen { fill: #330000D9; stroke: gray; stroke-width: 0.25 }

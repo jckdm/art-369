@@ -17,6 +17,10 @@
           <stop offset="0%" style="stop-color:#9d4e15;stop-opacity:1" />
           <stop offset="100%" style="stop-color:#fcf1e9;stop-opacity:1" />
         </linearGradient>
+        <linearGradient id="button" x1="0%" x2="0%" y2="100%">
+          <stop offset="0%" style="stop-color:#D2B48C;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#2c2321;stop-opacity:1" />
+        </linearGradient>
         <linearGradient id="glass" x1="0%" x2="0%" y2="100%">
           <stop offset="0%" style="stop-color:#FFFFFF26;stop-opacity:1" />
           <stop offset="100%" style="stop-color:#BEBEBE0D;stop-opacity:1" />
@@ -27,8 +31,14 @@
         <pattern id="crack" width="30" height="400">
           <image xlink:href="crack.png" x="0" y="0" width="350" height="300" />
         </pattern>
+        <pattern id="crack2" width="50" height="500">
+          <image xlink:href="crack2.png" x="675" y="0" width="100" height="100" />
+        </pattern>
         <pattern id="plastic" patternUnits="userSpaceOnUse" width="100" height="100">
           <image xlink:href="plastic.jpg" x="0" y="0" width="200" height="150" />
+        </pattern>
+        <pattern id="lines" patternUnits="userSpaceOnUse" width="150" height="20">
+          <image xlink:href="lines.png" x="0" y="0" width="150" height="20" />
         </pattern>
       </defs>
       <!-- TABLE -->
@@ -40,6 +50,7 @@
       <polygon points="135,200 300,50 900,50 1065,200" id="top"/>
       <polygon points="225,180 325,50 875,50 980,180" id="grate"/>
       <polygon points="263,130 325,50 875,50 940,130" id="backgrate"/>
+      <polygon points="263,130 325,50 875,50 940,130" fill="url(#lines)"/>
       <polygon points="225,180 225,190 980,190 980,180" id="belowgrate"/>
       <!-- FRONT -->
       <polygon points="135,200 1065,200 1115,600 100,600" id="front"/>
@@ -48,7 +59,14 @@
       <polygon points="300,325 900,325 900,475 300,475" fill="url(#plastic)" id="screen"/>
       <polygon points="150,215 1050,215 1100,585 115,585" fill="url(#glass)"/>
       <polygon points="150,215 1050,215 1100,585 115,585" fill="url(#crack)"/>
+      <polygon points="150,215 1050,215 1100,585 115,585" fill="url(#crack2)"/>
+      <polygon points="700,155 700,170 765,170 765,155" fill="black"/>
+      <rect onclick="play()" id="radio" x="700" y="140" rx="10" ry="5" width="50" height="25" fill="url(#button)">
       Sorry, your browser fucking sucks.
     </svg>
+    <audio id="audio">
+      <source src="sublime.mp3" type="audio/mpeg">
+    </audio>
   </body>
+  <script src="script.js"></script>
 </html>
