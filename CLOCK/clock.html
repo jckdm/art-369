@@ -7,6 +7,10 @@
       <title>clock / art 369</title>
   </head>
   <body>
+    <p id="hrs"></p>
+    <p id="mins"></p>
+    <img src="plus.png" onclick="plus()" id="plus" alt="+">
+    <img src="minus.png" onclick="minus()" id="minus" alt="–">
     <svg id="s" width="1200" height="750">
       <defs>
         <linearGradient id="top" y2="100%">
@@ -18,8 +22,8 @@
           <stop offset="100%" style="stop-color:#fcf1e9;stop-opacity:1" />
         </linearGradient>
         <linearGradient id="button" x1="0%" x2="0%" y2="100%">
-          <stop offset="0%" style="stop-color:#D2B48C;stop-opacity:1" />
-          <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+          <stop offset="0%" style="stop-color:#9e9472;stop-opacity:1" />
+          <stop offset="100%" style="stop-color:#110e09;stop-opacity:1" />
         </linearGradient>
         <linearGradient id="glass" x1="0%" x2="0%" y2="100%">
           <stop offset="0%" style="stop-color:#FFFFFF26;stop-opacity:1" />
@@ -60,9 +64,14 @@
       <polygon points="150,215 1050,215 1100,585 115,585" fill="url(#glass)"/>
       <polygon points="150,215 1050,215 1100,585 115,585" fill="url(#crack)"/>
       <polygon points="150,215 1050,215 1100,585 115,585" fill="url(#crack2)"/>
-      <rect x="700" y="155" rx="15" ry="3" width="65" height="15" fill="black"/>
+
+      <!-- BUTTONS -->
+      <rect x="595" y="155" rx="15" ry="3" width="60" height="15" fill="#110e09"/>
+      <rect onclick="alarm()" id="alarm" x="600" y="140" rx="10" ry="5" width="50" height="25" fill="url(#button)"/>
+
+      <rect x="700" y="155" rx="15" ry="3" width="65" height="15" fill="#110e09"/>
       <rect onclick="play()" id="radio" x="700" y="140" rx="10" ry="5" width="50" height="25" fill="url(#button)"/>
-      <ellipse id="light" cx="753" cy="162" rx="5" ry="5" transform='skewX(10)' fill="#b30000"/>
+      <ellipse id="light" cx="753" cy="162" rx="5" ry="5" transform='skewX(10)' stroke="white" stroke-width="0.15" fill="#800000"/>
       Sorry, your browser fucking sucks.
     </svg>
     <audio id="audio">

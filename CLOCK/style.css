@@ -6,4 +6,32 @@ body { background: darkgray; }
 #fronter { fill: #010101D9; }
 #screen { fill: #330000D9; stroke: gray; stroke-width: 0.25 }
 #wood { stroke: black; }
-#s { display: block; margin: auto; }
+#s { display: block; margin: auto; z-index: -1; }
+
+#hrs, #mins {
+  z-index: 1000;
+  color: #201E1E;
+  font-weight: bold;
+  font-family: Helvetica;
+  font-size: 120px;
+  position: absolute;
+  top: 355px;
+  display: block;
+  margin: auto;
+}
+
+#plus, #minus {
+  z-index: 1001;
+  position: absolute;
+  left: 1010px;
+  display: block;
+  margin: auto;
+  height: 50px;
+  opacity: 0.1;
+}
+
+#plus { top: 350px; }
+#minus { top: 420px; }
+
+#hrs { left: 402px; }
+#mins { left: 845px; }
