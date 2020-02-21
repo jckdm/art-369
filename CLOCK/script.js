@@ -13,7 +13,7 @@ function play() {
   else { r.attributes.x.value = 700; a.pause(); b.attributes.fill.value = "#800000"; }
 }
 
-function alarm() {
+async function alarm() {
   var a = document.getElementById('alarm');
   var h = parseInt(a.attributes.height.value);
   var y = parseInt(a.attributes.y.value);
@@ -28,12 +28,24 @@ function alarm() {
     hrs.style.color = "#FFFFFF"; hrs.style.opacity = 0.5;
     mins.style.color = "#FFFFFF"; mins.style.opacity = 0.5;
   }
-  else {
+  if (h == 20) {
+    if (p.style.opacity == 0.7) {
+      var d = new Date();
+      var cHrs = parseInt(document.getElementById('hrs').innerHTML);
+      var cMins = parseInt(document.getElementById('mins').innerHTML);
+      var aTime = ((((cMins - d.getMinutes()) * 60000) + ((cHrs - d.getHours()) * 3600000)) - d.getSeconds() * 1000);
+
+      var lite = document.getElementById('alarmLight');
+      lite.attributes.fill.value = "#006600";
+    }
     a.attributes.height.value = 25; a.attributes.y.value = 140;
     p.style.opacity = 0.1; m.style.opacity = 0.1;
     hrs.style.color = "#201E1E"; hrs.style.opacity = 1.0;
     mins.style.color = "#201E1E"; mins.style.opacity = 1.0;
     time();
+    await sleep(aTime);
+    lite.attributes.fill.value = "#800000";
+    play();
   }
 }
 
@@ -48,7 +60,7 @@ function plus() {
     var h = parseInt(hrs.innerHTML);
 
     m = String((m + 1) % 60);
-    if (m == 0) { h = String((h + 1) % 13); }
+    if (m == 0) { h = String((h + 1) % 24); }
 
     if (m.length == 1) { m = "0" + m; }
     if (String(h).length == 1) { h = "0" + h; }

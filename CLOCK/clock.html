@@ -9,8 +9,8 @@
   <body>
     <p id="hrs"></p>
     <p id="mins"></p>
-    <img src="plus.png" onclick="plus()" id="plus" alt="+">
-    <img src="minus.png" onclick="minus()" id="minus" alt="–">
+    <img src="images/plus.png" onclick="plus()" id="plus" alt="+">
+    <img src="images/minus.png" onclick="minus()" id="minus" alt="–">
     <svg id="s" width="1200" height="750">
       <defs>
         <linearGradient id="top" y2="100%">
@@ -30,19 +30,19 @@
           <stop offset="100%" style="stop-color:#BEBEBE0D;stop-opacity:1" />
         </linearGradient>
         <pattern id="wood" patternUnits="userSpaceOnUse" width="100" height="100">
-          <image xlink:href="wood.jpg" x="0" y="0" width="100" height="100" />
+          <image xlink:href="images/wood.jpg" x="0" y="0" width="100" height="100" />
         </pattern>
         <pattern id="crack" width="30" height="400">
-          <image xlink:href="crack.png" x="0" y="0" width="350" height="300" />
+          <image xlink:href="images/crack.png" x="0" y="0" width="350" height="300" />
         </pattern>
         <pattern id="crack2" width="50" height="500">
-          <image xlink:href="crack2.png" x="675" y="0" width="100" height="100" />
+          <image xlink:href="images/crack2.png" x="675" y="0" width="100" height="100" />
         </pattern>
         <pattern id="plastic" patternUnits="userSpaceOnUse" width="100" height="100">
-          <image xlink:href="plastic.jpg" x="0" y="0" width="200" height="150" />
+          <image xlink:href="images/plastic.jpg" x="0" y="0" width="200" height="150" />
         </pattern>
         <pattern id="lines" patternUnits="userSpaceOnUse" width="150" height="20">
-          <image xlink:href="lines.png" x="0" y="0" width="150" height="20" />
+          <image xlink:href="images/lines.png" x="0" y="0" width="150" height="20" />
         </pattern>
       </defs>
       <!-- TABLE -->
@@ -72,10 +72,11 @@
       <rect x="700" y="155" rx="15" ry="3" width="65" height="15" fill="#110e09"/>
       <rect onclick="play()" id="radio" x="700" y="140" rx="10" ry="5" width="50" height="25" fill="url(#button)"/>
       <ellipse id="light" cx="753" cy="162" rx="5" ry="5" transform='skewX(10)' stroke="white" stroke-width="0.15" fill="#800000"/>
+      <ellipse id="alarmLight" cx="592" cy="162" rx="5" ry="5" transform='skewX(-5)' stroke="white" stroke-width="0.15" fill="#800000"/>
       Sorry, your browser fucking sucks.
     </svg>
     <audio id="audio">
-      <source src="sublime.mp3" type="audio/mpeg">
+      <source src="music/sublime.mp3" type="audio/mpeg">
     </audio>
   </body>
   <script src="script.js"></script>
