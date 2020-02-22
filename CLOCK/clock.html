@@ -67,12 +67,16 @@
 
       <!-- BUTTONS -->
       <rect x="595" y="155" rx="15" ry="3" width="60" height="15" fill="#110e09"/>
-      <rect onclick="alarm()" id="alarm" x="600" y="140" rx="10" ry="5" width="50" height="25" fill="url(#button)"/>
+      <rect onclick="alarm(false)" id="alarm" x="600" y="140" rx="10" ry="5" width="50" height="25" fill="url(#button)"/>
+      <ellipse id="alarmLight" cx="592" cy="162" rx="5" ry="5" transform='skewX(-5)' stroke="white" stroke-width="0.15" fill="#800000"/>
 
       <rect x="700" y="155" rx="15" ry="3" width="65" height="15" fill="#110e09"/>
       <rect onclick="play()" id="radio" x="700" y="140" rx="10" ry="5" width="50" height="25" fill="url(#button)"/>
       <ellipse id="light" cx="753" cy="162" rx="5" ry="5" transform='skewX(10)' stroke="white" stroke-width="0.15" fill="#800000"/>
-      <ellipse id="alarmLight" cx="592" cy="162" rx="5" ry="5" transform='skewX(-5)' stroke="white" stroke-width="0.15" fill="#800000"/>
+
+      <rect x="395" y="155" rx="15" ry="3" width="90" height="15" fill="#110e09"/>
+      <rect onclick="snooze()" id="snooze" x="400" y="140" rx="10" ry="5" width="80" height="25" fill="url(#button)"/>
+
       Sorry, your browser fucking sucks.
     </svg>
     <audio id="audio">

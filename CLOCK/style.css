@@ -25,6 +25,7 @@ body {
   top: 355px;
   display: block;
   margin: auto;
+  -webkit-text-stroke: 0.2px pink;
 }
 
 #plus, #minus {
