@@ -1,4 +1,6 @@
 body {
+  font-family: Helvetica;
+  font-weight: bold;
   background: darkgray;
   -moz-user-select: none;
   -khtml-user-select: none;
@@ -16,20 +18,18 @@ body {
 #s { display: block; margin: auto; z-index: -1; }
 
 #hrs, #mins {
-  z-index: 1000;
+  z-index: 1;
   color: #201E1E;
-  font-weight: bold;
-  font-family: Helvetica;
   font-size: 120px;
   position: absolute;
   top: 355px;
   display: block;
   margin: auto;
-  -webkit-text-stroke: 0.2px pink;
+  -webkit-text-stroke: 0.2px #FFC0CB;
 }
 
 #plus, #minus {
-  z-index: 1001;
+  z-index: 0;
   position: absolute;
   left: 1010px;
   display: block;
@@ -43,3 +43,53 @@ body {
 
 #hrs { left: 402px; }
 #mins { left: 845px; }
+
+.info {
+  position: fixed;
+  right: 0;
+  top: 0;
+  color: #FFC0CB;
+  margin: 1.5vw;
+  font-size: calc(2vw + 1.5vh + 35px);
+}
+
+.info:hover {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #3CB371;
+}
+
+.Modal {
+   display: none;
+   position: fixed;
+   z-index: 0;
+   padding-top: calc(52.5px + 4vh);
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100%;
+   overflow: auto;
+   background-color: #000000;
+}
+.modal-content {
+   background-color: #3CB371;
+   margin: auto;
+   padding: calc(10px + 1vw);
+   width: 70%;
+   overflow: auto;
+   max-height: calc(100vh - 210px);
+   overflow-y: auto;
+   border: 1.5px solid #FFC0CB;
+}
+
+.close {
+   color: #FFC0CB;
+   float: right;
+   font-size: calc(37.5px + 0.75vw + 0.75vh);
+   font-weight: bold;
+}
+
+.close:hover { color: #FFFFFF; }
+.abt { font-size: calc(37.5px + 0.75vw + 0.75vh); }
+#me:hover { color: #FFC0CB; }
+
+a, a:visited { text-decoration: none; color: black; }

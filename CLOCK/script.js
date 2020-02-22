@@ -109,3 +109,9 @@ async function time() {
     await sleep(1000);
   }
 }
+
+var modal = document.getElementById("Modal");
+var btn = document.getElementById("Btn");
+var span = document.getElementsByClassName("close")[0];
+btn.onclick = function() { modal.style.display = "block"; }
+span.onclick = function() { modal.style.display = "none"; }
