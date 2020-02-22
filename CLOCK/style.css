@@ -28,10 +28,13 @@ body {
   -webkit-text-stroke: 0.2px #FFC0CB;
 }
 
+#hrs { left: calc(10vw + 275px); }
+#mins { left: calc(17.25vw + 598px); }
+
 #plus, #minus {
   z-index: 0;
   position: absolute;
-  left: 1010px;
+  left: calc(12.5vw + 850px);
   display: block;
   margin: auto;
   height: 50px;
@@ -40,9 +43,6 @@ body {
 
 #plus { top: 350px; }
 #minus { top: 420px; }
-
-#hrs { left: 402px; }
-#mins { left: 845px; }
 
 .info {
   position: fixed;
