@@ -28,13 +28,9 @@ body {
   -webkit-text-stroke: 0.2px #FFC0CB;
 }
 
-#hrs { left: calc(10vw + 275px); }
-#mins { left: calc(17.25vw + 598px); }
-
 #plus, #minus {
   z-index: 0;
   position: absolute;
-  left: calc(12.5vw + 850px);
   display: block;
   margin: auto;
   height: 50px;
@@ -93,3 +89,14 @@ body {
 #me:hover { color: #FFC0CB; }
 
 a, a:visited { text-decoration: none; color: black; }
+
+@media only screen and (max-width: 1200px) {
+  #hrs { left: 325px; }
+  #mins { left: 755px; }
+  #plus, #minus { left: 935px; }
+}
+@media only screen and (min-width: 1200px) {
+  #hrs { left: 30vw; }
+  #mins { left: 60.5vw; }
+  #plus, #minus { left: 74vw; }
+}
