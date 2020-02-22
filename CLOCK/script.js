@@ -1,16 +1,14 @@
 window.onload = function() { time(); };
 
-// https://www.sitepoint.com/delay-sleep-pause-wait/
-function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
-
-function play() {
+async function play() {
   var r = document.getElementById('radio');
   var a = document.getElementById('audio');
+  var d = a.duration * 1000;
   var b = document.getElementById('light');
   var x = parseInt(r.attributes.x.value);
 
-  if (x == 700) { r.attributes.x.value = 715; a.play(); b.attributes.fill.value = "#006600"; }
-  else { r.attributes.x.value = 700; a.pause(); b.attributes.fill.value = "#800000"; }
+  if (x == 700) { rOn(r, b); a.play(); await sleep(d); rOff(r, b); }
+  if (x == 715) { rOff(r, b); a.pause(); }
 }
 
 async function snooze() {
@@ -18,11 +16,7 @@ async function snooze() {
   var h = parseInt(s.attributes.height.value);
   var lite = document.getElementById('alarmLight');
 
-  if (h == 25) {
-    s.attributes.height.value = 20; s.attributes.y.value = 145;
-    lite.attributes.fill.value = "#006600";
-    alarm(true);
-  }
+  if (h == 25) { sOn(s, l); alarm(true); }
 }
 
 async function alarm(flag) {
@@ -36,36 +30,11 @@ async function alarm(flag) {
   var lite = document.getElementById('alarmLight');
   var s = document.getElementById('snooze');
 
-  if (flag == true) {
-    await sleep(540000);
-    lite.attributes.fill.value = "#800000";
-    s.attributes.height.value = 25; s.attributes.y.value = 140;
-    play();
-  }
-  else {
-    if (h == 25) {
-      a.attributes.height.value = 20; a.attributes.y.value = 145;
-      p.style.opacity = 0.7; m.style.opacity = 0.7;
-      hrs.style.color = "#FFFFFF"; hrs.style.opacity = 0.5;
-      mins.style.color = "#FFFFFF"; mins.style.opacity = 0.5;
-    }
-    if (h == 20) {
-      if (p.style.opacity == 0.7) {
-        var d = new Date();
-        var cHrs = parseInt(document.getElementById('hrs').innerHTML);
-        var cMins = parseInt(document.getElementById('mins').innerHTML);
-        var aTime = ((((cMins - d.getMinutes()) * 60000) + ((cHrs - d.getHours()) * 3600000)) - d.getSeconds() * 1000);
-
-        lite.attributes.fill.value = "#006600";
-      }
-      a.attributes.height.value = 25; a.attributes.y.value = 140;
-      p.style.opacity = 0.1; m.style.opacity = 0.1;
-      hrs.style.color = "#201E1E"; hrs.style.opacity = 1.0;
-      mins.style.color = "#201E1E"; mins.style.opacity = 1.0;
-      time();
-      await sleep(aTime);
-      lite.attributes.fill.value = "#800000";
-      play();
+  if (flag == true) { await sleep(540000); sOff(s, lite); play(); }
+  else { if (h == 25) { aOn(a, p, hrs, mins); }
+    else {
+      if (p.style.opacity == 0.7) { var aTime = gt(); lite.attributes.fill.value = "#006600"; }
+      aOff(a, p, hrs, mins, aTime, lite);
     }
   }
 }
@@ -109,6 +78,54 @@ async function time() {
     await sleep(1000);
   }
 }
+
+function sOn(s, l) {
+  s.attributes.height.value = 20; s.attributes.y.value = 145;
+  l.attributes.fill.value = "#006600";
+}
+
+function sOff(s, l) {
+  s.attributes.height.value = 25; s.attributes.y.value = 140;
+  l.attributes.fill.value = "#800000";
+}
+
+function rOn(r, l) {
+  r.attributes.x.value = 715;
+  l.attributes.fill.value = "#006600";
+}
+
+function rOff(r, l) {
+  r.attributes.x.value = 700;
+  l.attributes.fill.value = "#800000";
+}
+
+function aOn(a, p, h, m) {
+  a.attributes.height.value = 20; a.attributes.y.value = 145;
+  p.style.opacity = 0.7; m.style.opacity = 0.7;
+  h.style.color = "#FFFFFF"; h.style.opacity = 0.5;
+  m.style.color = "#FFFFFF"; m.style.opacity = 0.5;
+}
+
+async function aOff(a, p, h, m, aT, l) {
+  a.attributes.height.value = 25; a.attributes.y.value = 140;
+  p.style.opacity = 0.1; m.style.opacity = 0.1;
+  h.style.color = "#201E1E"; h.style.opacity = 1.0;
+  m.style.color = "#201E1E"; m.style.opacity = 1.0;
+  time();
+  await sleep(aT);
+  l.attributes.fill.value = "#800000";
+  play();
+}
+
+function gt() {
+  var d = new Date();
+  var cHrs = parseInt(document.getElementById('hrs').innerHTML);
+  var cMins = parseInt(document.getElementById('mins').innerHTML);
+  return ((((cMins - d.getMinutes()) * 60000) + ((cHrs - d.getHours()) * 3600000)) - d.getSeconds() * 1000);
+}
+
+// https://www.sitepoint.com/delay-sleep-pause-wait/
+function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
 var modal = document.getElementById("Modal");
 var btn = document.getElementById("Btn");
