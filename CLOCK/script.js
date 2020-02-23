@@ -16,7 +16,7 @@ async function snooze() {
   var h = parseInt(s.attributes.height.value);
   var lite = document.getElementById('alarmLight');
 
-  if (h == 25) { sOn(s, l); alarm(true); }
+  if (h == 25) { sOn(s, lite); alarm(true); }
 }
 
 async function alarm(flag) {
@@ -30,8 +30,10 @@ async function alarm(flag) {
   var lite = document.getElementById('alarmLight');
   var s = document.getElementById('snooze');
 
-  if (flag == true) { await sleep(540000); sOff(s, lite); play(); }
-  else { if (h == 25) { aOn(a, p, hrs, mins); }
+  // snooze
+  if (flag == true) { await sleep(540000); sOff(s, lite); s.disabled = false; play(); }
+  else {
+    if (h == 25) { aOn(a, p, hrs, mins); }
     else {
       if (p.style.opacity == 0.7) { var aTime = gt(); lite.attributes.fill.value = "#006600"; }
       aOff(a, p, hrs, mins, aTime, lite);
@@ -80,6 +82,7 @@ async function time() {
 }
 
 function sOn(s, l) {
+  s.disabled = true;
   s.attributes.height.value = 20; s.attributes.y.value = 145;
   l.attributes.fill.value = "#006600";
 }
