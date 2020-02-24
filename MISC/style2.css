@@ -1,0 +1,79 @@
+body { font-family: 'Courier Prime', monospace; height: 4000px; }
+
+@media only screen and (min-width: 1200px) {
+  body { font-size: 36pt; }
+  #rect, #sorry { display: block; }
+  #rounded, #ears { display: none; }
+  #lite3 { display: none; color: #FFFFFF; }
+}
+@media only screen and (max-width: 1200px) {
+  body { font-size: 32pt; }
+  #rect, #sorry { display: block; }
+  #rounded, #ears { display: none; }
+  #lite3 { display: none; color: #FFFFFF; }
+}
+@media only screen and (max-width: 992px) {
+  body { font-size: 24pt; }
+  #rect, #sorry { display: block; }
+  #ears { display: none; }
+  #rounded, #ears { display: none; }
+  #lite3 { display: none; color: #FFFFFF; }
+}
+@media only screen and (max-width: 768px) {
+  body { font-size: 16pt; }
+  #rect, #sorry { display: none; }
+  #rounded, #ears { display: block; }
+  #lite3 { display: none; color: #FFFFFF; }
+}
+@media only screen and (max-width: 690px) {
+  body { font-size: 12pt; }
+  #rect, #sorry, #ears { display: none; }
+  #rounded { display: block; }
+  #lite3 { display: none; color: #FFFFFF; }
+}
+@media only screen and (max-width: 480px) {
+  body { font-size: 8pt; }
+  #rect, #sorry { display: none; }
+  #rounded, #ears { display: block; }
+  #lite3 { display: none; color: #FFFFFF; }
+}
+
+@media only screen and (max-height: 350px) {
+  body { font-size: 36pt; background-color: black; }
+  #rect, #sorry, #rounded, #ears, #lite, #lite2, #light { display: none; color: white; }
+}
+
+#svg {
+  width: 95vw;
+  height: 400vh;
+}
+
+#sorry { width: 65vw; }
+#ears { width: 20vw; }
+
+#rect {
+  width: 85vw;
+  height: calc(10vh + 100px);
+  fill: #0000FF;
+  stroke-width: 10;
+  stroke: #000000;
+}
+
+#rounded {
+  width: calc(60vw + 50px);
+  height: calc(40vw + 100px);
+  fill: #FFFF00;
+  stroke-width: 10;
+  stroke: #000000;
+}
+
+#light {
+  fill: green;
+  display: none;
+}
+
+#lite, #lite2 { display: none; }
+
+#space { padding-bottom: 10px; }
+
+#big { fill: white; stroke: yellow; stroke-width: 100; display: none; margin: auto; width: 50vw; }
