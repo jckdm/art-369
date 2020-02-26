@@ -83,10 +83,12 @@ body {
    font-size: calc(37.5px + 0.75vw + 0.75vh);
    font-weight: bold;
 }
-
 .close:hover { color: #FFFFFF; }
+
 .abt { font-size: calc(37.5px + 0.75vw + 0.75vh); }
-#me:hover { color: #FFC0CB; }
+.cr { font-size: calc(15px + 0.75vw + 0.75vh); }
+
+.link:hover { color: #FFC0CB; }
 
 a, a:visited { text-decoration: none; color: black; }
 

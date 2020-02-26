@@ -1,55 +1,62 @@
-window.onload = function() { time(); };
+// 1. what if the radio is playing when the alarm goes off?
+
+var snoo = document.getElementById('snooze');
+var alarm = document.getElementById('alarm');
+var radio = document.getElementById('radio');
+var pow = document.getElementById('power');
+var audio = document.getElementById('audio');
+var plus = document.getElementById('plus');
+var minus = document.getElementById('minus');
+var alarmLight = document.getElementById('alarmLight');
+var radioLight = document.getElementById('light');
+var hrs = document.getElementById('hrs');
+var mins = document.getElementById('mins');
+
+window.onload = function() { time(); snoo.disabled = alarm.disabled = radio.disabled = false};
 
 async function play() {
-  var r = document.getElementById('radio');
-  var a = document.getElementById('audio');
-  var d = a.duration * 1000;
-  var b = document.getElementById('light');
-  var x = parseInt(r.attributes.x.value);
-
-  if (x == 700) { rOn(r, b); a.play(); await sleep(d); rOff(r, b); }
-  if (x == 715) { rOff(r, b); a.pause(); }
+  if (radio.attributes.x.value == 700) {
+    rOn();
+    audio.play();
+    await sleep(audio.duration * 1000);
+    rOff();
+  }
+  else { rOff(); audio.pause(); }
 }
 
 async function snooze() {
-  var s = document.getElementById('snooze');
-  var h = parseInt(s.attributes.height.value);
-  var lite = document.getElementById('alarmLight');
-
-  if (h == 25) { sOn(s, lite); alarm(true); }
+  if (snoo.disabled == false) {
+    if (snoo.attributes.height.value == 25) { sOn(); ala(true); }
+  }
 }
 
-async function alarm(flag) {
-  var a = document.getElementById('alarm');
-  var h = parseInt(a.attributes.height.value);
-  var y = parseInt(a.attributes.y.value);
-  var p = document.getElementById('plus');
-  var m = document.getElementById('minus');
-  var hrs = document.getElementById('hrs');
-  var mins = document.getElementById('mins');
-  var lite = document.getElementById('alarmLight');
-  var s = document.getElementById('snooze');
+function power() {
+  if (pow.attributes.x.value == 850) { powerOff(); }
+  else { powerOn(); }
+}
 
-  // snooze
-  if (flag == true) { await sleep(540000); sOff(s, lite); s.disabled = false; play(); }
-  else {
-    if (h == 25) { aOn(a, p, hrs, mins); }
+async function ala(flag) {
+  if (alarm.disabled == false && snoo.disabled == false && radio.disabled == false) {
+    // snooze
+    if (flag == true) {
+      snoo.disabled = alarm.disabled = radio.disabled = true;
+      await sleep(6000);
+      sOff();
+      play();
+    }
+    // just wanna set the alarm
     else {
-      if (p.style.opacity == 0.7) { var aTime = gt(); lite.attributes.fill.value = "#006600"; }
-      aOff(a, p, hrs, mins, aTime, lite);
+      if (alarm.attributes.height.value == 25) { aOn(); }
+      else { aOff(gt()); }
     }
   }
 }
 
-function plus() {
-  var p = document.getElementById('plus');
+function more() {
+  if (plus.style.opacity == 0.7) {
 
-  if (p.style.opacity == 0.7) {
-    var hrs = document.getElementById('hrs');
-    var mins = document.getElementById('mins');
-
-    var m = parseInt(mins.innerHTML);
     var h = parseInt(hrs.innerHTML);
+    var m = parseInt(mins.innerHTML);
 
     m = String((m + 1) % 60);
     if (m == 0) { h = String((h + 1) % 24); }
@@ -63,11 +70,7 @@ function plus() {
 }
 
 async function time() {
-  var a = document.getElementById('alarm');
-  var hrs = document.getElementById('hrs');
-  var mins = document.getElementById('mins');
-
-  while (a.attributes.height.value == 25) {
+  while (alarm.attributes.height.value == 25) {
     var d = new Date();
     var h = d.getHours();
     var m = d.getMinutes();
@@ -81,50 +84,68 @@ async function time() {
   }
 }
 
-function sOn(s, l) {
-  s.disabled = true;
-  s.attributes.height.value = 20; s.attributes.y.value = 145;
-  l.attributes.fill.value = "#006600";
+function powerOff() {
+  snoo.disabled = alarm.disabled = radio.disabled = true;
+  pow.attributes.x.value = 858;
+  plus.style.opacity = minus.style.opacity = 0.0;
+  alarmLight.style.fill = radioLight.style.fill = "#1C1A1A";
 }
 
-function sOff(s, l) {
-  s.attributes.height.value = 25; s.attributes.y.value = 140;
-  l.attributes.fill.value = "#800000";
+function powerOn() {
+  snoo.disabled = alarm.disabled = radio.disabled = false;
+  pow.attributes.x.value = 850;
+  plus.style.opacity = minus.style.opacity = 0.1;
+  alarmLight.style.fill = radioLight.style.fill = "#800000";
 }
 
-function rOn(r, l) {
-  r.attributes.x.value = 715;
-  l.attributes.fill.value = "#006600";
+function sOn() {
+  // disabled in ala()
+  snoo.attributes.height.value = 20; snoo.attributes.y.value = 145;
+  alarmLight.attributes.fill.value = "#006600";
 }
 
-function rOff(r, l) {
-  r.attributes.x.value = 700;
-  l.attributes.fill.value = "#800000";
+function sOff() {
+  snoo.disabled = alarm.disabled = radio.disabled = false;
+  snoo.attributes.height.value = 25; snoo.attributes.y.value = 140;
+  alarmLight.attributes.fill.value = "#800000";
 }
 
-function aOn(a, p, h, m) {
-  a.attributes.height.value = 20; a.attributes.y.value = 145;
-  p.style.opacity = 0.7; m.style.opacity = 0.7;
-  h.style.color = "#FFFFFF"; h.style.opacity = 0.5;
-  m.style.color = "#FFFFFF"; m.style.opacity = 0.5;
+function rOn() {
+  snoo.disabled = alarm.disabled = radio.disabled = true;
+  radio.attributes.x.value = 715;
+  radioLight.attributes.fill.value = "#006600";
 }
 
-async function aOff(a, p, h, m, aT, l) {
-  a.attributes.height.value = 25; a.attributes.y.value = 140;
-  p.style.opacity = 0.1; m.style.opacity = 0.1;
-  h.style.color = "#201E1E"; h.style.opacity = 1.0;
-  m.style.color = "#201E1E"; m.style.opacity = 1.0;
+function rOff() {
+  snoo.disabled = alarm.disabled = radio.disabled = false;
+  radio.attributes.x.value = 700;
+  radioLight.attributes.fill.value = "#800000";
+}
+
+function aOn() {
+  alarm.attributes.height.value = 20; alarm.attributes.y.value = 145;
+  plus.style.opacity = minus.style.opacity = 0.7;
+  hrs.style.color = mins.style.color = "#FFFFFF";
+  hrs.style.opacity = mins.style.opacity = 0.5;
+}
+
+async function aOff(aT) {
+  alarmLight.attributes.fill.value = "#006600";
+  alarm.attributes.height.value = 25; alarm.attributes.y.value = 140;
+  plus.style.opacity = minus.style.opacity = 0.1;
+  hrs.style.color = mins.style.color = "#201E1E";
+  hrs.style.opacity = mins.style.opacity = 1.0;
   time();
+  snoo.disabled = alarm.disabled = true;
   await sleep(aT);
-  l.attributes.fill.value = "#800000";
+  snoo.disabled = alarm.disabled = false;
+  alarmLight.attributes.fill.value = "#800000";
   play();
 }
 
 function gt() {
   var d = new Date();
-  var cHrs = parseInt(document.getElementById('hrs').innerHTML);
-  var cMins = parseInt(document.getElementById('mins').innerHTML);
-  return ((((cMins - d.getMinutes()) * 60000) + ((cHrs - d.getHours()) * 3600000)) - d.getSeconds() * 1000);
+  return ((((mins.innerHTML - d.getMinutes()) * 60000) + ((hrs.innerHTML - d.getHours()) * 3600000)) - d.getSeconds() * 1000);
 }
 
 // https://www.sitepoint.com/delay-sleep-pause-wait/

@@ -9,8 +9,8 @@
   <body>
     <p id="hrs"></p>
     <p id="mins"></p>
-    <img src="images/plus.png" onclick="plus()" id="plus" alt="+">
-    <img src="images/minus.png" onclick="minus()" id="minus" alt="–">
+    <img src="images/plus.png" onclick="more()" id="plus" alt="+">
+    <img src="images/minus.png" onclick="less()" id="minus" alt="–">
     <svg id="s" width="1200" height="750">
       <defs>
         <linearGradient id="top" y2="100%">
@@ -66,18 +66,19 @@
       <polygon points="150,215 1050,215 1100,585 115,585" fill="url(#crack2)"/>
 
       <!-- BUTTONS -->
-      <rect x="595" y="155" rx="15" ry="3" width="60" height="15" fill="#110e09"/>
-      <rect onclick="alarm(false)" id="alarm" x="600" y="140" rx="10" ry="5" width="50" height="25" fill="url(#button)"/>
-      <ellipse id="alarmLight" cx="592" cy="162" rx="5" ry="5" transform='skewX(-5)' stroke="white" stroke-width="0.15" fill="#800000"/>
-
-      <rect x="700" y="155" rx="15" ry="3" width="65" height="15" fill="#110e09"/>
-      <rect onclick="play()" id="radio" x="700" y="140" rx="10" ry="5" width="50" height="25" fill="url(#button)"/>
-      <ellipse id="light" cx="753" cy="162" rx="5" ry="5" transform='skewX(10)' stroke="white" stroke-width="0.15" fill="#800000"/>
-
       <rect x="395" y="155" rx="15" ry="3" width="90" height="15" fill="#110e09"/>
       <rect onclick="snooze()" id="snooze" x="400" y="140" rx="10" ry="5" width="80" height="25" fill="url(#button)"/>
 
-      Sorry, your browser fucking sucks.
+      <rect x="595" y="155" rx="15" ry="3" width="60" height="15" fill="#110e09"/>
+      <rect onclick="ala(false)" id="alarm" x="600" y="140" rx="10" ry="5" width="50" height="25" fill="url(#button)"/>
+      <ellipse id="alarmLight" cx="592" cy="162" rx="5" ry="5" transform='skewX(-5)' stroke="white" stroke-width="0.15" fill="#800000"/>
+
+      <rect x="700" y="155" rx="15" ry="3" width="80" height="15" fill="#110e09"/>
+      <rect onclick="play()" id="radio" x="700" y="140" rx="10" ry="5" width="65" height="25" fill="url(#button)"/>
+      <ellipse id="light" cx="768" cy="162" rx="5" ry="5" transform='skewX(10)' stroke="white" stroke-width="0.15" fill="#800000"/>
+
+      <rect x="850" y="155" rx="15" ry="3" width="40" height="15" fill="#110e09"/>
+      <rect onclick="power()" id="power" x="850" y="140" rx="10" ry="5" width="32" height="25" fill="url(#button)"/>      Sorry, your browser fucking sucks.
     </svg>
     <audio id="audio">
       <source src="music/sublime.mp3" type="audio/mpeg">
@@ -86,7 +87,8 @@
     <div id="Modal" class="Modal">
         <div class="modal-content">
             <span class="close">&#8617;&#xFE0E;</span>
-            <span class="abt">clock by <a href="https://www.jackadam.cc" id="me" target="_blank">jack adam</a></span>
+            <span class="abt">clock by <a href="https://www.jackadam.cc" class="link" target="_blank">jack adam</a></span> <br> <br>
+            <span class="cr">song by <a href="https://thecaretaker.bandcamp.com/" class="link" target="_blank">the caretaker</a></span>
         </div>
     </div>
   </body>
