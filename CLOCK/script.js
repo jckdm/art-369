@@ -1,5 +1,3 @@
-// 1. what if the radio is playing when the alarm goes off?
-
 var snoo = document.getElementById('snooze');
 var alarm = document.getElementById('alarm');
 var radio = document.getElementById('radio');
@@ -17,11 +15,18 @@ window.onload = function() { time(); snoo.disabled = alarm.disabled = radio.disa
 async function play() {
   if (radio.attributes.x.value == 700) {
     rOn();
-    audio.play();
     await sleep(audio.duration * 1000);
     rOff();
   }
-  else { rOff(); audio.pause(); }
+  else {
+    // radio is on when alarm goes off
+    if (alarm.disabled == true) {
+      rOff();
+      await sleep(2000);
+      rOn();
+    }
+    else { rOff(); }
+  }
 }
 
 async function snooze() {
@@ -114,12 +119,14 @@ function rOn() {
   snoo.disabled = alarm.disabled = radio.disabled = true;
   radio.attributes.x.value = 715;
   radioLight.attributes.fill.value = "#006600";
+  audio.play();
 }
 
 function rOff() {
   snoo.disabled = alarm.disabled = radio.disabled = false;
   radio.attributes.x.value = 700;
   radioLight.attributes.fill.value = "#800000";
+  audio.pause();
 }
 
 function aOn() {
@@ -138,9 +145,9 @@ async function aOff(aT) {
   time();
   snoo.disabled = alarm.disabled = true;
   await sleep(aT);
-  snoo.disabled = alarm.disabled = false;
   alarmLight.attributes.fill.value = "#800000";
   play();
+  snoo.disabled = alarm.disabled = false;
 }
 
 function gt() {
