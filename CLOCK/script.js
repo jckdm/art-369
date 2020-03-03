@@ -22,12 +22,12 @@ async function play() {
   // this doesn't work
   else {
     // radio is on when alarm goes off
-    if (alarm.disabled == true) {
+    if (alarm.disabled == true && on == true) {
       rOff();
       await sleep(2000);
       rOn();
     }
-    else { rOff(); }
+    else if (on == true) { rOff(); }
   }
 }
 
