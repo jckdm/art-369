@@ -9,16 +9,17 @@ var alarmLight = document.getElementById('alarmLight');
 var radioLight = document.getElementById('light');
 var hrs = document.getElementById('hrs');
 var mins = document.getElementById('mins');
+var on = true;
 
 window.onload = function() { time(); snoo.disabled = alarm.disabled = radio.disabled = false};
 
 async function play() {
-  if (radio.attributes.x.value == 700) {
+  if (radio.attributes.x.value == 700 && on == true) {
     rOn();
     await sleep(audio.duration * 1000);
     rOff();
   }
-  else {
+  else if (on == true) {
     // radio is on when alarm goes off
     if (alarm.disabled == true) {
       rOff();
@@ -30,7 +31,7 @@ async function play() {
 }
 
 async function snooze() {
-  if (snoo.disabled == false) {
+  if (snoo.disabled == false && on == true) {
     if (snoo.attributes.height.value == 25) { sOn(); ala(true); }
   }
 }
@@ -41,7 +42,7 @@ function power() {
 }
 
 async function ala(flag) {
-  if (alarm.disabled == false && snoo.disabled == false && radio.disabled == false) {
+  if (alarm.disabled == false && snoo.disabled == false && radio.disabled == false && on == true) {
     // snooze
     if (flag == true) {
       snoo.disabled = alarm.disabled = radio.disabled = true;
@@ -75,7 +76,7 @@ function more() {
 }
 
 async function time() {
-  while (alarm.attributes.height.value == 25) {
+  while (alarm.attributes.height.value == 25 && on == true) {
     var d = new Date();
     var h = d.getHours();
     var m = d.getMinutes();
@@ -90,17 +91,21 @@ async function time() {
 }
 
 function powerOff() {
+  on = false;
   snoo.disabled = alarm.disabled = radio.disabled = true;
   pow.attributes.x.value = 858;
   plus.style.opacity = minus.style.opacity = 0.0;
-  alarmLight.style.fill = radioLight.style.fill = "#1C1A1A";
+  alarmLight.attributes.fill.value = radioLight.attributes.fill.value = "#1C1A1A";
+  hrs.innerHTML = mins.innerHTML = "";
 }
 
 function powerOn() {
+  on = true;
   snoo.disabled = alarm.disabled = radio.disabled = false;
   pow.attributes.x.value = 850;
   plus.style.opacity = minus.style.opacity = 0.1;
-  alarmLight.style.fill = radioLight.style.fill = "#800000";
+  alarmLight.attributes.fill.value = radioLight.attributes.fill.value = "#800000";
+  time();
 }
 
 function sOn() {
