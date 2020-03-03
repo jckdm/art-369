@@ -19,7 +19,8 @@ async function play() {
     await sleep(audio.duration * 1000);
     rOff();
   }
-  else if (on == true) {
+  // this doesn't work
+  else {
     // radio is on when alarm goes off
     if (alarm.disabled == true) {
       rOff();
