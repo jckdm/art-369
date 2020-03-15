@@ -60,11 +60,11 @@ async function ala(flag) {
 }
 
 function more() {
-  if (plus.style.opacity == 0.7) {
+  var h = parseInt(hrs.innerHTML);
+  var m = parseInt(mins.innerHTML);
 
-    var h = parseInt(hrs.innerHTML);
-    var m = parseInt(mins.innerHTML);
-
+  minus.style.opacity = 0.7;
+  if (alarm.attributes.height.value == 20) {
     m = String((m + 1) % 60);
     if (m == 0) { h = String((h + 1) % 24); }
 
@@ -74,6 +74,29 @@ function more() {
     hrs.innerHTML = String(h)
     mins.innerHTML = String(m);
   }
+}
+
+function less() {
+  var h = parseInt(hrs.innerHTML);
+  var m = parseInt(mins.innerHTML);
+  var d = new Date();
+  var dm = d.getMinutes() - m;
+  var dh = d.getHours() - h;
+
+  if ((dh == 0 && dm < 0) || dh < 0) {
+    minus.style.opacity = 0.7;
+    if (alarm.attributes.height.value == 20) {
+      m = String((m - 1) % 60);
+      if (m == -1) { h = String((h - 1) % 24); }
+      if (m < 0) { m = 60 + parseInt(m); }
+      if (m.length == 1) { m = "0" + m; }
+      if (String(h).length == 1) { h = "0" + h; }
+
+      hrs.innerHTML = String(h)
+      mins.innerHTML = String(m);
+    }
+  }
+  else { minus.style.opacity = 0.1; }
 }
 
 async function time() {
