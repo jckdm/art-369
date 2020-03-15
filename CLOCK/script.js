@@ -1,3 +1,7 @@
+// 1. if radio playing when radio turned off
+// 2. alarm engaged when radio turned off
+// 3. ^^ snooze
+
 var snoo = document.getElementById('snooze');
 var alarm = document.getElementById('alarm');
 var radio = document.getElementById('radio');
@@ -38,8 +42,9 @@ async function snooze() {
 }
 
 function power() {
-  if (pow.attributes.x.value == 850) { powerOff(); }
-  else { powerOn(); }
+  flag = radio.attributes.x.value == 700 ? false : true;
+  if (pow.attributes.x.value == 850) { powerOff(flag); }
+  else { powerOn(flag); }
 }
 
 async function ala(flag) {
@@ -114,22 +119,24 @@ async function time() {
   }
 }
 
-function powerOff() {
+function powerOff(flag) {
   on = false;
   snoo.disabled = alarm.disabled = radio.disabled = true;
   pow.attributes.x.value = 858;
   plus.style.opacity = minus.style.opacity = 0.0;
   alarmLight.attributes.fill.value = radioLight.attributes.fill.value = "#1C1A1A";
   hrs.innerHTML = mins.innerHTML = "";
+  if (flag == true) { audio.pause(); }
 }
 
-function powerOn() {
+function powerOn(flag) {
   on = true;
   snoo.disabled = alarm.disabled = radio.disabled = false;
   pow.attributes.x.value = 850;
   plus.style.opacity = minus.style.opacity = 0.1;
   alarmLight.attributes.fill.value = radioLight.attributes.fill.value = "#800000";
   time();
+  if (flag == true) { audio.play(); radioLight.attributes.fill.value = "#006600"; }
 }
 
 function sOn() {
