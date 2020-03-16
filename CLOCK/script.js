@@ -18,7 +18,7 @@ var on = true;
 window.onload = function() { time(); snoo.disabled = alarm.disabled = radio.disabled = false};
 
 async function play(flag) {
-  if (radio.attributes.x.value == 700 && on == true) {
+  if (radio.attributes.x.value == 650 && on == true) {
     rOn();
     await sleep(audio.duration * 1000);
     rOff();
@@ -41,8 +41,8 @@ async function snooze() {
 }
 
 function power() {
-  flag = radio.attributes.x.value == 700 ? false : true;
-  if (pow.attributes.x.value == 850) { powerOff(flag); }
+  flag = radio.attributes.x.value == 650 ? false : true;
+  if (pow.attributes.x.value == 840) { powerOff(flag); }
   else { powerOn(flag); }
 }
 
@@ -121,7 +121,7 @@ async function time() {
 function powerOff(flag) {
   on = false;
   snoo.disabled = alarm.disabled = radio.disabled = true;
-  pow.attributes.x.value = 858;
+  pow.attributes.x.value = 848;
   plus.style.opacity = minus.style.opacity = 0.0;
   alarmLight.attributes.fill.value = radioLight.attributes.fill.value = "#1C1A1A";
   hrs.innerHTML = mins.innerHTML = "";
@@ -131,7 +131,7 @@ function powerOff(flag) {
 function powerOn(flag) {
   on = true;
   snoo.disabled = alarm.disabled = radio.disabled = false;
-  pow.attributes.x.value = 850;
+  pow.attributes.x.value = 840;
   plus.style.opacity = minus.style.opacity = 0.1;
   alarmLight.attributes.fill.value = radioLight.attributes.fill.value = "#800000";
   time();
@@ -152,14 +152,14 @@ function sOff() {
 
 function rOn() {
   snoo.disabled = alarm.disabled = radio.disabled = true;
-  radio.attributes.x.value = 715;
+  radio.attributes.x.value = 665;
   radioLight.attributes.fill.value = "#006600";
   audio.play();
 }
 
 function rOff() {
   snoo.disabled = alarm.disabled = radio.disabled = false;
-  radio.attributes.x.value = 700;
+  radio.attributes.x.value = 650;
   radioLight.attributes.fill.value = "#800000";
   audio.pause();
 }
