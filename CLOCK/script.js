@@ -17,22 +17,21 @@ var on = true;
 
 window.onload = function() { time(); snoo.disabled = alarm.disabled = radio.disabled = false};
 
-async function play() {
+async function play(flag) {
   if (radio.attributes.x.value == 700 && on == true) {
     rOn();
     await sleep(audio.duration * 1000);
     rOff();
   }
-  // this doesn't work
-  else {
+  else if (flag == false) {
     // radio is on when alarm goes off
     if (alarm.disabled == true && on == true) {
       rOff();
       await sleep(2000);
       rOn();
     }
-    else if (on == true) { rOff(); }
   }
+  else if (on == true) { rOff(); }
 }
 
 async function snooze() {
@@ -182,7 +181,7 @@ async function aOff(aT) {
   snoo.disabled = alarm.disabled = true;
   await sleep(aT);
   alarmLight.attributes.fill.value = "#800000";
-  play();
+  play(false);
   snoo.disabled = alarm.disabled = false;
 }
 
