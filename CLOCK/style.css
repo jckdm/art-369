@@ -1,5 +1,10 @@
+@font-face {
+	font-family: "FFF";
+	src: url("FFFFORWA.TTF");
+}
+
 body {
-  font-family: Helvetica;
+  font-family: FFF;
   font-weight: bold;
   background: gray;
   -moz-user-select: none;
@@ -20,12 +25,13 @@ body {
 #hrs, #mins {
   z-index: 1;
   color: #201E1E;
-  font-size: 120px;
+  font-size: 80px;
   position: absolute;
-  top: 355px;
+  top: 367px;
   display: block;
   margin: auto;
   -webkit-text-stroke: 0.2px #FFC0CB;
+  opacity: 0.8;
 }
 
 #plus, #minus {
@@ -41,6 +47,7 @@ body {
 #minus { top: 420px; }
 
 .info {
+  font-family: Helvetica;
   position: fixed;
   right: 0;
   top: 0;
@@ -55,6 +62,7 @@ body {
 }
 
 .Modal {
+   font-family: Helvetica;
    display: none;
    position: fixed;
    z-index: 0;
@@ -93,42 +101,42 @@ body {
 a, a:visited { text-decoration: none; color: black; }
 
 @media only screen and (max-width: 1200px) {
-  #hrs { left: 325px; }
-  #mins { left: 755px; }
+  #hrs { left: 341px; }
+  #mins { left: 762px; }
   #plus, #minus { left: 935px; }
 }
 
 @media only screen and (min-width: 1200px) and (max-width: 1250px) {
-  #hrs { left: 27vw; }
-  #mins { left: 62vw; }
+  #hrs { left: 28vw; }
+  #mins { left: 63.5vw; }
   #plus, #minus { left: 77vw; } }
 
 @media only screen and (min-width: 1250px) and (max-width: 1300px) {
-  #hrs { left: 28vw; }
-  #mins { left: 61.25vw; }
+  #hrs { left: 29vw; }
+  #mins { left: 62.75vw; }
   #plus, #minus { left: 76vw; } }
 
 @media only screen and (min-width: 1300px) and (max-width: 1350px) {
-  #hrs { left: 29vw; }
-  #mins { left: 60.50vw; }
+  #hrs { left: 30vw; }
+  #mins { left: 62vw; }
   #plus, #minus { left: 75vw; } }
 
 @media only screen and (min-width: 1350px) and (max-width: 1400px) {
-  #hrs { left: 30vw; }
-  #mins { left: 59.75vw; }
+  #hrs { left: 31vw; }
+  #mins { left: 61.25vw; }
   #plus, #minus { left: 74vw; } }
 
 @media only screen and (min-width: 1400px) and (max-width: 1450px) {
-  #hrs { left: 31vw; }
-  #mins { left: 59vw; }
+  #hrs { left: 32vw; }
+  #mins { left: 60.5vw; }
   #plus, #minus { left: 73vw; } }
 
 @media only screen and (min-width: 1450px) and (max-width: 1500px) {
-  #hrs { left: 32vw; }
-  #mins { left: 58.25vw; }
+  #hrs { left: 33vw; }
+  #mins { left: 59.75vw; }
   #plus, #minus { left: 72vw; } }
 
 @media only screen and (min-width: 1500px) {
-  #hrs { left: 33vw; }
-  #mins { left: 57.50vw; }
+  #hrs { left: 34vw; }
+  #mins { left: 59vw; }
   #plus, #minus { left: 71vw; } }
