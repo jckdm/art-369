@@ -41,6 +41,7 @@ body {
   margin: auto;
   height: 50px;
   opacity: 0.1;
+	cursor: grab;
 }
 
 #plus { top: 350px; }
@@ -54,6 +55,7 @@ body {
   color: #FFC0CB;
   margin: 1.5vw;
   font-size: calc(2vw + 1.5vh + 35px);
+	cursor: grab;
 }
 
 .info:hover {

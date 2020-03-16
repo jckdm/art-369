@@ -1,7 +1,3 @@
-// 1. if radio playing when radio turned off
-// 2. alarm engaged when radio turned off
-// 3. ^^ snooze
-
 var snoo = document.getElementById('snooze');
 var alarm = document.getElementById('alarm');
 var radio = document.getElementById('radio');
@@ -66,9 +62,13 @@ async function ala(flag) {
 function more() {
   var h = parseInt(hrs.innerHTML);
   var m = parseInt(mins.innerHTML);
+  var d = new Date();
+  var dm = d.getMinutes() - m;
+  var dh = d.getHours() - h;
 
-  minus.style.opacity = 0.7;
-  if (alarm.attributes.height.value == 20) {
+  if ((dh == 0 && dm < 1) || dh < 0) { minus.style.opacity = 0.7; }
+
+  if (alarm.attributes.height.value == 20 && plus.style.opacity == 0.7) {
     m = String((m + 1) % 60);
     if (m == 0) { h = String((h + 1) % 24); }
 
@@ -172,17 +172,21 @@ function aOn() {
 }
 
 async function aOff(aT) {
-  alarmLight.attributes.fill.value = "#006600";
   alarm.attributes.height.value = 25; alarm.attributes.y.value = 140;
   plus.style.opacity = minus.style.opacity = 0.1;
   hrs.style.color = mins.style.color = "#201E1E";
-  hrs.style.opacity = mins.style.opacity = 1.0;
+  hrs.style.opacity = mins.style.opacity = 0.8;
   time();
-  snoo.disabled = alarm.disabled = true;
-  await sleep(aT);
-  alarmLight.attributes.fill.value = "#800000";
-  play(false);
-  snoo.disabled = alarm.disabled = false;
+  if (aT > 5000) {
+    alarmLight.attributes.fill.value = "#006600";
+    snoo.disabled = alarm.disabled = true;
+    await sleep(aT);
+    if (on == true) {
+      alarmLight.attributes.fill.value = "#800000";
+      play(false);
+      snoo.disabled = alarm.disabled = false;
+    }
+  }
 }
 
 function gt() {
