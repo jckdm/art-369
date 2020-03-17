@@ -128,6 +128,7 @@ function powerOff(flag) {
   hrs.innerHTML = mins.innerHTML = "";
   if (flag == true) { audio.pause(); }
   if (alarm.attributes.height.value == 20) { aOff(0); }
+  if (snoo.attributes.height.value == 20) { sOff(); }
 }
 
 function powerOn(flag) {
