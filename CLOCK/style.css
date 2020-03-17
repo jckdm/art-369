@@ -22,6 +22,9 @@ body {
 #wood { stroke: black; }
 #s { display: block; margin: auto; z-index: -1; }
 
+.b, #plus, #minus, .info, .close { cursor: grab; }
+.b:active, #plus:active, #minus:active, .info:active, .close:active { cursor: grabbing; }
+
 #hrs, #mins {
   z-index: 1;
   color: #201E1E;
@@ -30,7 +33,7 @@ body {
   top: 367px;
   display: block;
   margin: auto;
-  -webkit-text-stroke: 0.2px #FFC0CB;
+  -webkit-text-stroke: 0.1px #FFC0CB;
   opacity: 0.8;
 }
 
@@ -41,7 +44,6 @@ body {
   margin: auto;
   height: 50px;
   opacity: 0.1;
-	cursor: grab;
 }
 
 #plus { top: 350px; }
@@ -55,7 +57,6 @@ body {
   color: #FFC0CB;
   margin: 1.5vw;
   font-size: calc(2vw + 1.5vh + 35px);
-	cursor: grab;
 }
 
 .info:hover {

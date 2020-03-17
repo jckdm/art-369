@@ -47,8 +47,9 @@ async function ala(flag) {
     // snooze
     if (flag == true) {
       snoo.disabled = alarm.disabled = radio.disabled = true;
-      await sleep(6000);
-      sOff();
+      await sleep(540000);
+      flag = pow.attributes.x.value == 840 ? false : true;
+      sOff(flag);
       play();
     }
     // just wanna set the alarm
@@ -66,7 +67,7 @@ function more() {
   var dm = d.getMinutes() - m;
   var dh = d.getHours() - h;
 
-  if ((dh == 0 && dm < 1) || dh < 0) { minus.style.opacity = 0.7; }
+  if (((dh == 0 && dm < 1) || dh < 0) && alarm.attributes.height.value == 20) { minus.style.opacity = 0.7; }
 
   if (alarm.attributes.height.value == 20 && plus.style.opacity == 0.7) {
     m = String((m + 1) % 60);
@@ -126,6 +127,7 @@ function powerOff(flag) {
   alarmLight.attributes.fill.value = radioLight.attributes.fill.value = "#1C1A1A";
   hrs.innerHTML = mins.innerHTML = "";
   if (flag == true) { audio.pause(); }
+  if (alarm.attributes.height.value == 20) { aOff(0); }
 }
 
 function powerOn(flag) {
@@ -144,10 +146,10 @@ function sOn() {
   alarmLight.attributes.fill.value = "#006600";
 }
 
-function sOff() {
+function sOff(flag) {
   snoo.disabled = alarm.disabled = radio.disabled = false;
   snoo.attributes.height.value = 25; snoo.attributes.y.value = 140;
-  alarmLight.attributes.fill.value = "#800000";
+  if (flag == false) { alarmLight.attributes.fill.value = "#800000"; }
 }
 
 function rOn() {
