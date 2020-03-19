@@ -11,7 +11,7 @@ var hrs = document.getElementById('hrs');
 var mins = document.getElementById('mins');
 var on = true;
 
-window.onload = function() { time(); snoo.disabled = alarm.disabled = radio.disabled = false};
+window.onload = function() { time(); snoo.disabled = alarm.disabled = radio.disabled = false; };
 
 async function play(flag) {
   if (radio.attributes.x.value == 650 && on == true) {
@@ -20,7 +20,7 @@ async function play(flag) {
     rOff();
   }
   else if (flag == false) {
-    // radio is on when alarm goes off
+    // radio is on when alarm/snooze goes off
     if (alarm.disabled == true && on == true) {
       rOff();
       await sleep(2000);
@@ -46,11 +46,13 @@ async function ala(flag) {
   if (alarm.disabled == false && snoo.disabled == false && radio.disabled == false && on == true) {
     // snooze
     if (flag == true) {
-      snoo.disabled = alarm.disabled = radio.disabled = true;
+      snoo.disabled = alarm.disabled = true;
+      snoo.style.cursor = alarm.style.cursor = "not-allowed";
       await sleep(540000);
       flag = pow.attributes.x.value == 840 ? false : true;
-      sOff(flag);
-      play();
+      flag2 = radio.attributes.x.value == 650 ? false : true;
+      sOff(flag, flag2);
+      play(false);
     }
     // just wanna set the alarm
     else {
@@ -67,8 +69,10 @@ function more() {
   var dm = d.getMinutes() - m;
   var dh = d.getHours() - h;
 
-  if (((dh == 0 && dm < 1) || dh < 0) && alarm.attributes.height.value == 20) { minus.style.opacity = 0.7; }
-
+  if (((dh == 0 && dm < 1) || dh < 0) && alarm.attributes.height.value == 20) {
+    minus.style.opacity = 0.7;
+    minus.style.cursor = "pointer";
+  }
   if (alarm.attributes.height.value == 20 && plus.style.opacity == 0.7) {
     m = String((m + 1) % 60);
     if (m == 0) { h = String((h + 1) % 24); }
@@ -88,8 +92,9 @@ function less() {
   var dm = d.getMinutes() - m;
   var dh = d.getHours() - h;
 
-  if ((dh == 0 && dm < 0) || dh < 0) {
+  if ((dh <= 0 && dm < 0) || dh < 0) {
     minus.style.opacity = 0.7;
+    minus.style.cursor = "pointer";
     if (alarm.attributes.height.value == 20) {
       m = String((m - 1) % 60);
       if (m == -1) { h = String((h - 1) % 24); }
@@ -101,7 +106,7 @@ function less() {
       mins.innerHTML = String(m);
     }
   }
-  else { minus.style.opacity = 0.1; }
+  else { minus.style.opacity = 0.1; minus.style.cursor = "not-allowed"; }
 }
 
 async function time() {
@@ -126,6 +131,7 @@ function powerOff(flag) {
   plus.style.opacity = minus.style.opacity = 0.0;
   alarmLight.attributes.fill.value = radioLight.attributes.fill.value = "#1C1A1A";
   hrs.innerHTML = mins.innerHTML = "";
+  snoo.style.cursor = alarm.style.cursor = radio.style.cursor = plus.style.cursor = minus.style.cursor = "default";
   if (flag == true) { audio.pause(); }
   if (alarm.attributes.height.value == 20) { aOff(0); }
   if (snoo.attributes.height.value == 20) { sOff(); }
@@ -138,6 +144,8 @@ function powerOn(flag) {
   plus.style.opacity = minus.style.opacity = 0.1;
   alarmLight.attributes.fill.value = radioLight.attributes.fill.value = "#800000";
   time();
+  snoo.style.cursor = alarm.style.cursor = radio.style.cursor = "pointer";
+  plus.style.cursor = minus.style.cursor = "not-allowed";
   if (flag == true) { audio.play(); radioLight.attributes.fill.value = "#006600"; }
 }
 
@@ -147,8 +155,9 @@ function sOn() {
   alarmLight.attributes.fill.value = "#006600";
 }
 
-function sOff(flag) {
-  snoo.disabled = alarm.disabled = radio.disabled = false;
+function sOff(flag, flag2) {
+  if (flag2 == false) { snoo.disabled = alarm.disabled = radio.disabled = false; }
+  snoo.style.cursor = alarm.style.cursor = "pointer";
   snoo.attributes.height.value = 25; snoo.attributes.y.value = 140;
   if (flag == false) { alarmLight.attributes.fill.value = "#800000"; }
 }
@@ -169,7 +178,8 @@ function rOff() {
 
 function aOn() {
   alarm.attributes.height.value = 20; alarm.attributes.y.value = 145;
-  plus.style.opacity = minus.style.opacity = 0.7;
+  plus.style.opacity = 0.7;
+  plus.style.cursor = "pointer";
   hrs.style.color = mins.style.color = "#FFFFFF";
   hrs.style.opacity = mins.style.opacity = 0.5;
 }
@@ -177,16 +187,19 @@ function aOn() {
 async function aOff(aT) {
   alarm.attributes.height.value = 25; alarm.attributes.y.value = 140;
   plus.style.opacity = minus.style.opacity = 0.1;
+  plus.style.cursor = minus.style.cursor = "not-allowed";
   hrs.style.color = mins.style.color = "#201E1E";
   hrs.style.opacity = mins.style.opacity = 0.8;
   time();
   if (aT > 5000) {
     alarmLight.attributes.fill.value = "#006600";
+    alarm.style.cursor = "progress";
     snoo.disabled = alarm.disabled = true;
     await sleep(aT);
     if (on == true) {
       alarmLight.attributes.fill.value = "#800000";
       play(false);
+      alarm.style.cursor = "pointer";
       snoo.disabled = alarm.disabled = false;
     }
   }

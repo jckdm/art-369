@@ -4,7 +4,6 @@
 }
 
 body {
-  font-family: FFF;
   font-weight: bold;
   background: gray;
   -moz-user-select: none;
@@ -22,10 +21,12 @@ body {
 #wood { stroke: black; }
 #s { display: block; margin: auto; z-index: -1; }
 
-.b, #plus, #minus, .info, .close { cursor: grab; }
+#plus, #minus { cursor: not-allowed; }
+.b, .info, .close { cursor: pointer; }
 .b:active, #plus:active, #minus:active, .info:active, .close:active { cursor: grabbing; }
 
 #hrs, #mins {
+	font-family: FFF;
   z-index: 1;
   color: #201E1E;
   font-size: 80px;
