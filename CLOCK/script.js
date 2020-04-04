@@ -11,7 +11,10 @@ var hrs = document.getElementById('hrs');
 var mins = document.getElementById('mins');
 var on = true;
 
-window.onload = function() { time(); snoo.disabled = alarm.disabled = radio.disabled = false; };
+window.onload = function() {
+  if (window.innerWidth < 415) { alert("This site is built with technologies which are not mobile-friendly. Please visit on a computer!"); }
+  time(); snoo.disabled = alarm.disabled = radio.disabled = false;
+};
 
 async function play(flag) {
   if (radio.attributes.x.value == 650 && on == true) {
