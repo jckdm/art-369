@@ -140,7 +140,17 @@ a, a:visited { text-decoration: none; color: black; }
   #mins { left: 59.75vw; }
   #plus, #minus { left: 72vw; } }
 
-@media only screen and (min-width: 1500px) {
+@media only screen and (min-width: 1500px) and (max-width: 1550px) {
   #hrs { left: 34vw; }
   #mins { left: 59vw; }
   #plus, #minus { left: 71vw; } }
+
+@media only screen and (min-width: 1550px) and (max-width: 1600px) {
+  #hrs { left: 35vw; }
+  #mins { left: 58.25vw; }
+  #plus, #minus { left: 70vw; } }
+
+@media only screen and (min-width: 1600px) {
+  #hrs { left: 36vw; }
+  #mins { left: 57.5vw; }
+  #plus, #minus { left: 69vw; } }
